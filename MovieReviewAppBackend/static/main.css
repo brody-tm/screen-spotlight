@@ -1,25 +1,28 @@
 html {
-    background-color: #151515;
+    background-color: #18171d;
 }
 
 body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 16pt;
 }
 
 a {
-    color: #222222;
+    color: whitesmoke;
     text-decoration: none;
     transition: .5s;
 }
 
 a:hover {
-    color: #757575;
+    color: #cacaca;
 }
 
 nav {
-    padding: 10pt;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10pt 20pt;
     background-color: darkslateblue;
 }
 
@@ -36,7 +39,7 @@ footer {
     justify-content: center;
     padding: 10pt;
     color: white;
-    background-color: darkslateblue;
+    background-color: #473d8a;
 }
 
 footer a {
@@ -111,9 +114,17 @@ button:hover {
 .movie-description {
     width: 70%;
     text-align: center;
-    color: darkslategrey;
-    margin-top: 20pt;
-    margin-bottom: 20pt;
+    color: #8f8e91;
+    margin-top: 40pt;
+    margin-bottom: 40pt;
+}
+
+.movie-description-container {
+    border: 2pt dashed #2d2c32;
+    border-radius: 10pt;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
 }
 
 .movie-cover {
@@ -121,10 +132,11 @@ button:hover {
 }
 
 .review {
-    background-color: whitesmoke;
+    background-color: #2d2c32;
     border-radius: 10pt;
     padding: 10pt;
     margin-top: 10pt;
+    color: lightgrey;
 }
 
 .review-header {
@@ -139,9 +151,9 @@ button:hover {
 }
 
 .review-timestamp {
-    color: grey;
     font-size: smaller;
     margin-top: 5pt;
+    color: #9a9a9a;
 }
 
 .review-content {
@@ -153,6 +165,7 @@ button:hover {
 
 .reviews-header {
     font-weight: bold;
+    color: whitesmoke;
 }
 
 .star {
@@ -161,12 +174,13 @@ button:hover {
 }
 
 .page-header {
+    background-color: #5c5097;
     color: whitesmoke;
-    background-color: #222222;
-    height: 300pt;
+    height: 270pt;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .flashes {
@@ -198,7 +212,6 @@ button:hover {
 
 #main-content {
     padding: 10pt;
-    background-color: white;
 }
 
 #write-review-container {

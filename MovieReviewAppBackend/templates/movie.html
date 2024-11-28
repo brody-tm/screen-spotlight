@@ -4,9 +4,10 @@
     <h1>{% block title %}{{movie.title}}{% endblock %}</h1>
 {% endblock %}
 {% block content %}
-    <div class="spaced-evenly">
+    <div class="movie-description-container">
         <p class="movie-description">{{movie.description}}</p>
     </div>
+
     <div class="spaced-between">
         <span class="reviews-header">Reviews</span>
         <a href="/movie/{{ movie.id }}/write-review">Write a Review</a>
