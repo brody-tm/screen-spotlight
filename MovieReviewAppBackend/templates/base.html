@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <div id="outer-container">
+        <div id="inner-container">
+            <nav class="spaced-between">
+                <a href="/movies">Movies</a>
+                <a href="/logout">Logout</a>
+            </nav>
+
+            <div class="page-header">
+                {% block head %}{% endblock %}
+            </div>
+
+            {# Flashed messages #}
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+
+            <div id="main-content">
+                {% block content %}{% endblock %}
+            </div>
+
+            <footer>
+                <span>© 2024 brody-t</span>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

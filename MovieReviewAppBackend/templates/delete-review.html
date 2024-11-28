@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <h1>{% block title %}Delete Review?{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div id="yes-no-container">
+        {# If choose no, request to get main movie page #}
+        <form class="no" method="get" action="/movie/{{ movie_id }}">
+            <button type="submit">No</button>
+        </form>
+
+        {# If choose yes, request to "post" to delete review page #}
+        <form class="yes" method="post" action="/movie/{{ movie_id }}/delete-review/{{ review_id }}">
+            <button type="submit">Yes</button>
+        </form>
+    </div>
+{% endblock %}

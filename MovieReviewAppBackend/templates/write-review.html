@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <h1>{% block title %}Write Review · {{ Movie.title }}{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+    <div id="write-review-container">
+        <form class="review-form" method="post" action="/movie/{{ Movie.id }}/write-review">
+            <label for="review-title">Review Title:</label>
+            <input type="text" id="review-title" name="title" required />
+
+            <label for="review-content">Your Review:</label>
+            <textarea id="review-content" name="content" rows="10" cols="30" required></textarea>
+
+             <label for="review-rating">Rating (between 1 and 5):</label>
+             <input type="range" id="review-rating" name="rating" min="1" max="5">
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}

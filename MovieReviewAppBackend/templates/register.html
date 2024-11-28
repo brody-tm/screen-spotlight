@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <h1>{% block title %}Register{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="centered">
+        <form action="/register" method="post">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" class="input-box" name="username"><br>
+
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" class="input-box" name="email"><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" class="input-box" name="password"><br>
+
+            <div class="centered">
+                <button type="submit">Submit</button>
+            </div>
+
+            {# If valid registration, redirect to login page #}
+        </form>
+    </div>
+{% endblock %}

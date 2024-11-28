@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <h1>{% block title %}{{movie.title}}{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+    <div class="spaced-evenly">
+        <p class="movie-description">{{movie.description}}</p>
+    </div>
+    <div class="spaced-between">
+        <span class="reviews-header">Reviews</span>
+        <a href="/movie/{{ movie.id }}/write-review">Write a Review</a>
+    </div>
+
+    <div id="reviews-section">
+        {% for r in reviews %}
+            <div class="review">
+                <div class="review-header">
+                    <span><strong>{{ r.review_title }}</strong></span>
+                    <span>
+                        {% for s in range(r.rating) %}
+                            <span class="star">★</span>
+                        {% endfor %}
+                        {% for s in range(5-r.rating) %}
+                            <span class="star">☆</span>
+                        {% endfor %}
+                    </span>
+                </div>
+                <div class="review-timestamp">{{ r.user.username }} · {{ r.updated_at }}</div>
+                <div class="review-content">
+                    <span>{{ r.review_content }}</span>
+                    <form action="/movie/{{ movie.id }}/delete-review/{{ r.id }}" method="get">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

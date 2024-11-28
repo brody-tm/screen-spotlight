@@ -1,0 +1,225 @@
+html {
+    background-color: #151515;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 16pt;
+}
+
+a {
+    color: #222222;
+    text-decoration: none;
+    transition: .5s;
+}
+
+a:hover {
+    color: #757575;
+}
+
+nav {
+    padding: 10pt;
+    background-color: darkslateblue;
+}
+
+nav a {
+    color: white;
+}
+
+nav a:hover {
+    color: #d6d6d6;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 10pt;
+    color: white;
+    background-color: darkslateblue;
+}
+
+footer a {
+    color: white;
+}
+
+button {
+    padding: 7pt;
+    background-color: lightgrey;
+    border: none;
+    border-radius: 6pt;
+    font-size: 12pt;
+    transition: .5s;
+}
+
+button:hover {
+    background-color: #b1b1b1;
+    cursor: pointer;
+}
+
+.spaced-evenly {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.spaced-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+}
+
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 230pt;
+    width: 230pt;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.65);
+    color: white;
+    border-radius: 10pt;
+    transition: .75s;
+}
+
+.movie-card:hover {
+    color: rgba(0, 0, 0, 0);
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.2);
+}
+
+.movie-card .star {
+    color: inherit;
+}
+
+.movie-card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10pt;
+}
+
+.movie-rating {
+    font-size: smaller;
+}
+
+.movie-description {
+    width: 70%;
+    text-align: center;
+    color: darkslategrey;
+    margin-top: 20pt;
+    margin-bottom: 20pt;
+}
+
+.movie-cover {
+    width: 200pt;
+}
+
+.review {
+    background-color: whitesmoke;
+    border-radius: 10pt;
+    padding: 10pt;
+    margin-top: 10pt;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.review-timestamp {
+    color: grey;
+    font-size: smaller;
+    margin-top: 5pt;
+}
+
+.review-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-top: 10pt;
+}
+
+.reviews-header {
+    font-weight: bold;
+}
+
+.star {
+    font-size: larger;
+    color: darkgoldenrod;
+}
+
+.page-header {
+    color: whitesmoke;
+    background-color: #222222;
+    height: 300pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flashes {
+    background-color: white;
+    color: red;
+    margin: 0;
+    padding-top: 10pt;
+    padding-left: 10pt;
+    list-style: none;
+}
+
+.input-box {
+    margin-top: 5pt;
+    margin-bottom: 5pt;
+    padding: 5pt;
+    border: 1pt solid lightgrey;
+    background-color: whitesmoke;
+    border-radius: 5pt;
+}
+
+#outer-container {
+    display: flex;
+    justify-content: center;
+}
+
+#inner-container {
+    width: 100%;
+}
+
+#main-content {
+    padding: 10pt;
+    background-color: white;
+}
+
+#write-review-container {
+    display: flex;
+    justify-content: center;
+}
+
+#yes-no-container {
+    display: flex;
+    justify-content: center;
+    gap: 10pt;
+}
+
+#review-title {
+    margin-top: 5pt;
+    margin-bottom: 5pt;
+    padding-top: 5pt;
+    padding-bottom: 5pt;
+}
+
+#review-content {
+    margin-top: 5pt;
+    margin-bottom: 5pt;
+}

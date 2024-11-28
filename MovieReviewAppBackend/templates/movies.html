@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <h1>{% block title %}All Movies{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+    <div class="movie-card-container">
+        {% for m in Movies %}
+            <a href="/movie/{{m.id}}">
+                <div class="movie-card" style="background-image: url({{ m.image_url }})">
+                    <div>
+                        {{m.title}}
+                    </div>
+                    {% if m.average_rating %}
+                        <span class="movie-rating">
+                            {{ m.number_of_reviews }} Reviews · {{ m.average_rating }} <span class="star">★</span>
+                        </span>
+                    {% else %}
+                        <span class="movie-rating">No Rating</span>
+                    {% endif %}
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}
