@@ -104,7 +104,7 @@ button:hover {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10pt;
+    gap: 20pt;
 }
 
 .movie-rating {
@@ -113,7 +113,7 @@ button:hover {
 
 .movie-description {
     width: 70%;
-    text-align: center;
+    text-align: left;
     color: #8f8e91;
     margin-top: 40pt;
     margin-bottom: 40pt;
@@ -124,7 +124,8 @@ button:hover {
     border-radius: 10pt;
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    width: 60%;
 }
 
 .movie-cover {
@@ -135,7 +136,7 @@ button:hover {
     background-color: #2d2c32;
     border-radius: 10pt;
     padding: 10pt;
-    margin-top: 10pt;
+    margin-top: 20pt;
     color: lightgrey;
 }
 
@@ -196,9 +197,13 @@ button:hover {
     margin-top: 5pt;
     margin-bottom: 5pt;
     padding: 5pt;
-    border: 1pt solid lightgrey;
-    background-color: whitesmoke;
+    border: none;
+    background-color: lightgrey;
     border-radius: 5pt;
+}
+
+.input-label {
+    color: whitesmoke;
 }
 
 #outer-container {
@@ -211,7 +216,7 @@ button:hover {
 }
 
 #main-content {
-    padding: 10pt;
+    padding: 20pt;
 }
 
 #write-review-container {

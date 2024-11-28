@@ -1,11 +1,24 @@
 {% extends "base.html" %}
 
 {% block head %}
-    <h1>{% block title %}{{movie.title}}{% endblock %}</h1>
+        <h1>
+            {% block title %}{{movie.title}}{% endblock %}
+            <br>
+            {% if movie.average_rating %}
+                <span class="movie-rating">
+                    {{ movie.average_rating }} <span class="star">★</span>
+                </span>
+            {% else %}
+                <span class="movie-rating">No Rating</span>
+            {% endif %}
+        </h1>
 {% endblock %}
+
 {% block content %}
-    <div class="movie-description-container">
-        <p class="movie-description">{{movie.description}}</p>
+    <div class="centered">
+        <div class="movie-description-container">
+            <p class="movie-description">{{movie.description}}</p>
+        </div>
     </div>
 
     <div class="spaced-between">

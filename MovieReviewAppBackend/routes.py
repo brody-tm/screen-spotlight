@@ -10,7 +10,7 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-    return 'Index'
+    return redirect(url_for('main.movies'))
 
 
 
