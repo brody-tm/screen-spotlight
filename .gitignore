@@ -1,0 +1,22 @@
+# Ignore Python bytecode
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore environment variables and sensitive files
+.env
+config.py
+
+# Ignore virtual environment
+.venv/
+venv/
+ENV/
+
+# Ignore IDE settings
+.idea/
+.vscode/
+
+# Ignore database files
+*.db
+*.sqlite3
+*.sql
