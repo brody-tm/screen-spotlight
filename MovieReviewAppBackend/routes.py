@@ -1,6 +1,7 @@
-from flask import Blueprint, flash, render_template, request, redirect, url_for
+from flask import Blueprint, flash, render_template, request, redirect, url_for, abort
+from flask_login import login_user, login_required
 from .models import User, Movie, Review
-from . import db
+from . import db, login_manager
 
 main = Blueprint('main', __name__)
 
@@ -10,7 +11,7 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-    return redirect(url_for('main.movies'))
+    return redirect(url_for('main.login'))
 
 
 
@@ -70,7 +71,15 @@ def login():
 
                 if correct_password:
                     # Correct password
-                    return redirect(url_for('main.movies'))
+                    login_user(user)
+
+                    flash('Logged in successfully.')
+
+                    # next = request.args.get('next')
+                    # if not url_has_allowed_host_and_scheme(next, request.host):
+                    #     return abort(400)
+
+                    return redirect('movies')
                 else:
                     # Incorrect password
                     flash('Incorrect password')
@@ -84,12 +93,16 @@ def login():
 def logout():
     return render_template('logout.html')
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
 
 
 # ---------------------------- Movie review routes ----------------------------------
 
 # Browse movies
 @main.route('/movies')
+# @login_required TODO: Does not work yet
 def movies():
     return render_template('movies.html', Movies=Movie.query.all())
 

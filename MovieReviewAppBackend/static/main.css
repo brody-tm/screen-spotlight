@@ -76,11 +76,10 @@ button:hover {
 }
 
 .movie-card {
+    height: 200pt;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 230pt;
-    width: 230pt;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -89,6 +88,8 @@ button:hover {
     color: white;
     border-radius: 10pt;
     transition: .75s;
+    padding-left: 5pt;
+    padding-right: 5pt;
 }
 
 .movie-card:hover {
@@ -101,9 +102,8 @@ button:hover {
 }
 
 .movie-card-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 20pt;
 }
 
@@ -240,4 +240,14 @@ button:hover {
 #review-content {
     margin-top: 5pt;
     margin-bottom: 5pt;
+}
+
+@media screen and (max-width: 767px) {
+    .movie-card-container {
+        grid-template-columns: 1fr;
+    }
+
+    .movie-description-container {
+        width: 100%;
+    }
 }
