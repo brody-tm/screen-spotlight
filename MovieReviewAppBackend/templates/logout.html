@@ -6,13 +6,13 @@
 
 {% block content %}
     <div id="yes-no-container">
-        {# If choose no, redirect main movie page #}
-        <form class="no" action="/movies">
+        {# If choose no, redirect to main movie page #}
+        <form class="no" action={{ url }}>
             <button type="submit">No</button>
         </form>
 
         {# If choose yes, request to login page #}
-        <form class="yes" action="/login">
+        <form class="yes"  method="post" action="/logout">
             <button type="submit">Yes</button>
         </form>
     </div>

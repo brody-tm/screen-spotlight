@@ -11,9 +11,6 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     reviews = db.relationship('Review', backref='user', lazy=True)
 
-    def get(self):
-        return self
-
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 

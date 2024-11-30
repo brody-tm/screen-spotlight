@@ -1,5 +1,5 @@
 from flask import Blueprint, flash, render_template, request, redirect, url_for, abort
-from flask_login import login_user, login_required
+from flask_login import login_user, login_required, current_user, logout_user
 from .models import User, Movie, Review
 from . import db, login_manager
 
@@ -89,25 +89,34 @@ def login():
     return render_template('login.html')
 
 # Logout
-@main.route('/logout')
+@main.route('/logout', methods=['GET', 'POST'])
+@login_required
 def logout():
-    return render_template('logout.html')
+    if request.method == 'POST':
+        logout_user()
+        flash('You have been logged out.')
+        return redirect(url_for('main.index'))
 
+    return render_template('logout.html', url=request.referrer)
+
+# Callback to reload the user object from the user ID stored in the session
 @login_manager.user_loader
 def load_user(user_id):
-    return User.get(user_id)
+    return User.query.get(int(user_id))
+
 
 
 # ---------------------------- Movie review routes ----------------------------------
 
 # Browse movies
 @main.route('/movies')
-# @login_required TODO: Does not work yet
+@login_required
 def movies():
     return render_template('movies.html', Movies=Movie.query.all())
 
 # Page for a specific movie
 @main.route('/movie/<movie_id>')
+@login_required
 def movie(movie_id):
     selected_movie = Movie.query.get(movie_id)
     reviews = Review.query.filter_by(movie_id=movie_id).order_by(Review.id.desc()).all()
@@ -116,13 +125,18 @@ def movie(movie_id):
 
 # Create review
 @main.route('/movie/<movie_id>/write-review', methods=['POST', 'GET'])
+@login_required
 def write_review(movie_id):
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
         rating = request.form['rating']
 
-        new_review = Review(review_title=title, review_content=content, rating=rating, user_id=1, movie_id=movie_id)
+        new_review = Review(review_title=title,
+                            review_content=content,
+                            rating=rating,
+                            user_id=current_user.id,
+                            movie_id=movie_id)
 
         db.session.add(new_review)
 
@@ -133,6 +147,7 @@ def write_review(movie_id):
 
 # Delete review TODO: Revise this
 @main.route('/movie/<movie_id>/delete-review/<review_id>', methods=['POST', 'GET'])
+@login_required
 def delete_review(movie_id, review_id):
     if request.method == 'POST':
         # POST request deletes the review
@@ -143,3 +158,13 @@ def delete_review(movie_id, review_id):
 
     # GET request to this route returns the 'delete review' page
     return render_template('delete-review.html', movie_id=movie_id, review_id=review_id)
+
+
+
+# ------------ Error Handlers ----------
+
+# 401
+@main.errorhandler(401)
+def unauthorized(e):
+    flash("Unauthorized access!")
+    return redirect(request.referrer)

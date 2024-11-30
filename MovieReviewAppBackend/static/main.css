@@ -47,11 +47,11 @@ footer a {
 }
 
 button {
-    padding: 7pt;
+    padding: 5pt;
     background-color: lightgrey;
     border: none;
     border-radius: 6pt;
-    font-size: 12pt;
+    font-size: 10pt;
     transition: .5s;
 }
 
@@ -125,7 +125,6 @@ button:hover {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 20px;
-    width: 60%;
 }
 
 .movie-cover {
@@ -185,7 +184,7 @@ button:hover {
 }
 
 .flashes {
-    background-color: white;
+    background-color: inherit;
     color: red;
     margin: 0;
     padding-top: 10pt;
@@ -242,12 +241,12 @@ button:hover {
     margin-bottom: 5pt;
 }
 
+#signup-prompt {
+    color: whitesmoke;
+}
+
 @media screen and (max-width: 767px) {
     .movie-card-container {
         grid-template-columns: 1fr;
-    }
-
-    .movie-description-container {
-        width: 100%;
     }
 }
