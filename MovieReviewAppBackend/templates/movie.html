@@ -43,9 +43,11 @@
                 <div class="review-timestamp">{{ r.user.username }} · {{ r.updated_at }}</div>
                 <div class="review-content">
                     <span>{{ r.review_content }}</span>
-                    <form action="/movie/{{ movie.id }}/delete-review/{{ r.id }}" method="get">
-                        <button type="submit">Delete</button>
-                    </form>
+                    {% if r.user == current_user %}
+                        <form action="/movie/{{ movie.id }}/delete-review/{{ r.id }}" method="get">
+                            <button type="submit">Delete</button>
+                        </form>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

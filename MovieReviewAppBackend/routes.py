@@ -11,6 +11,8 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
+    if current_user.is_authenticated:
+        return redirect(url_for('main.movies'))
     return redirect(url_for('main.login'))
 
 
@@ -44,6 +46,7 @@ def register():
             db.session.add(new_user)
             db.session.commit()
 
+            flash('Successfully registered')
             return redirect(url_for('main.login'))
 
         flash('Please enter all fields')
@@ -73,7 +76,7 @@ def login():
                     # Correct password
                     login_user(user)
 
-                    flash('Logged in successfully.')
+                    # flash('Logged in successfully.')
 
                     # next = request.args.get('next')
                     # if not url_has_allowed_host_and_scheme(next, request.host):
@@ -149,10 +152,15 @@ def write_review(movie_id):
 @main.route('/movie/<movie_id>/delete-review/<review_id>', methods=['POST', 'GET'])
 @login_required
 def delete_review(movie_id, review_id):
+    if not current_user == Review.query.get(review_id).user:
+        flash("You can't delete this post!")
+        return redirect(url_for('main.movie', movie_id=movie_id))
+
     if request.method == 'POST':
         # POST request deletes the review
         db.session.delete(Review.query.get(review_id))
         db.session.commit()
+
         # Redirect to main movie page
         return redirect(url_for('main.movie', movie_id=movie_id))
 
